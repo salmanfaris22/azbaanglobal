@@ -47,6 +47,7 @@ export function LocationPicker() {
               <div className="contact-row">
                 <span>📞 {active.phone1}</span>
                 {active.phone2 ? <span>☎ {active.phone2}</span> : null}
+                 {active.phone3 ? <span>☎ {active.phone3}</span> : null}
               </div>
               <a
                 href={active.directions}
