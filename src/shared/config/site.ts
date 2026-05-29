@@ -8,8 +8,8 @@ export const SITE = {
   email: "delhi@azbaanglobal.com",
   phoneUae: "+971 4 338 8893",
   phoneIndia: "+91 79027 77751",
-  phoneIndiaAlt: "+91 79027 77721",
-  whatsapp: "917902777721",
+  phoneIndiaAlt: "+91 79027 77751",
+  whatsapp: "917902777751",
   whatsappMessage: "Hello%azbaan%20global",
   office: "OFFICE No-122,ANTRIKSH BHAWAN 22,K.G MARG,CONNAUGHT PLACE NEW DELHI-110001",
 } as const;
