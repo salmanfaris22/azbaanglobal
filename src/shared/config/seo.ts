@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { HERO_IMAGE } from "./images";
 import { SITE, SITE_URL } from "./site";
 
 const defaultTitle =
@@ -6,11 +7,9 @@ const defaultTitle =
 const defaultDescription =
   "Azbaan global provides certificate attestation, apostille, MOFA, embassy, and consulate legalization in Dubai, UAE. Personal, educational, and commercial documents for 40+ countries.";
 
-const ogImageAlt =
-  "Azbaan global — attestation and apostille services in Dubai, UAE";
+const ogImageAlt = HERO_IMAGE.alt;
 
-const ogImageFallback =
-  "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=75";
+const ogImageFallback = HERO_IMAGE.src;
 
 export const structuredData = {
   "@context": "https://schema.org",

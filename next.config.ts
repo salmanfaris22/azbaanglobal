@@ -8,9 +8,15 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30,
     deviceSizes: [640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    qualities: [65, 70, 75, 80],
     remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "flagcdn.com" },
+      { protocol: "https", hostname: "www.talentattestation.com" },
+      { protocol: "https", hostname: "www.embassyattestation.co.in" },
+      { protocol: "https", hostname: "images.shiksha.com" },
+      { protocol: "https", hostname: "indexauh.com" },
+      { protocol: "https", hostname: "www.nobroker.in" },
+      { protocol: "https", hostname: "apostilleserviceus.com" },
     ],
   },
   headers: async () => [

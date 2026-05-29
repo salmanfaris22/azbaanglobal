@@ -23,7 +23,7 @@ export const LOCATIONS: Location[] = [
     label: "Dubai",
     map: "https://www.google.com/maps?q=Sheikha+Mhara+Building+Al+Twar+5+Dubai&output=embed",
     title:
-      "Sheikha Mhara Building - Office No 218/16 Second Floor - near Al Twar Center - Al Twar 5 - Dubai - United Arab Emirates",
+      "Sheikha Mhara Building, Office No 218/16, 2nd Floor, Near Al Twar Center, Al Qusais, Dubai - UAE",
     address: "Al Tawhidi Building, Bur Dubai, UAE",
     phone1: "+91 79027 77751",
     phone2: "+91 79027 77721",
@@ -34,7 +34,7 @@ export const LOCATIONS: Location[] = [
     key: "delhi",
     label: "Delhi",
     map: "https://www.google.com/maps?q=Azbaan+Global+Attestation+%26+Apostille+Services+Kochi&output=embed",
-    title: "Office No-122, Antriksh Bhawan, 22, KG Marg, Connaught Place, New Delhi, Delhi 110001",
+    title: "OFFICE No-122,ANTRIKSH BHAWAN 22,K.G MARG,CONNAUGHT PLACE NEW DELHI-110001",
     address: "New Delhi, India",
     phone1: "+91 79027 77751",
     phone2: "+91 79027 77721",

@@ -40,12 +40,16 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://images.unsplash.com" />
-        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://indexauh.com" />
+        <link rel="dns-prefetch" href="https://indexauh.com" />
+        <link rel="dns-prefetch" href="https://www.talentattestation.com" />
+        <link rel="dns-prefetch" href="https://www.embassyattestation.co.in" />
+        <link rel="dns-prefetch" href="https://images.shiksha.com" />
+        <link rel="dns-prefetch" href="https://www.nobroker.in" />
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="dns-prefetch" href="https://flagcdn.com" />
         <link rel="canonical" href={SITE_URL} />
-        <link rel="preload" as="image" href={HERO_IMAGE} fetchPriority="high" />
+        <link rel="preload" as="image" href={HERO_IMAGE.src} fetchPriority="high" />
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>

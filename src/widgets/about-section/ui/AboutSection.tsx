@@ -22,28 +22,20 @@ const STATS = [
 
 const PHOTOS = [
   {
-    ...CERTIFICATE_IMAGES.signing,
+    ...CERTIFICATE_IMAGES.certificateHandling,
     title: "Certificate handling",
     copy: "Personal, educational, and commercial certificates prepared for attestation.",
     className: "photo-main",
-    width: 1200,
-    height: 800,
+    width: 1199,
+    height: 1600,
   },
   {
-    ...CERTIFICATE_IMAGES.archive,
+    ...CERTIFICATE_IMAGES.verificationReview,
     title: "Verification review",
     copy: "Each document is checked against the process path required by destination authorities.",
     className: "photo-small",
-    width: 900,
-    height: 600,
-  },
-  {
-    ...CERTIFICATE_IMAGES.education,
-    title: "Educational certificates",
-    copy: "Degrees, diplomas, and school records handled for embassy and MOFA attestation.",
-    className: "photo-small",
-    width: 900,
-    height: 600,
+    width: 1066,
+    height: 1600,
   },
 ] as const;
 

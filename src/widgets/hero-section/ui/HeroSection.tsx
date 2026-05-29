@@ -109,8 +109,8 @@ export function HeroSection() {
             <div className="hero-photo-card" id="heroTilt" ref={tiltRef}>
               <OptimizedImage
                 className="hero-photo"
-                src={HERO_IMAGE}
-                alt="Dubai skyline — attestation and apostille services in UAE"
+                src={HERO_IMAGE.src}
+                alt={HERO_IMAGE.alt}
                 width={1200}
                 height={800}
                 priority
