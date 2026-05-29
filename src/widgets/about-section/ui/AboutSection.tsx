@@ -1,9 +1,12 @@
+"use client";
+
 import { OptimizedImage } from "@/shared/ui/OptimizedImage";
 import { Container } from "@/shared/ui/Container";
 import { IconBadge } from "@/shared/ui/IconBadge";
 import { Reveal } from "@/shared/ui/Reveal";
 import { Section, SectionHead } from "@/shared/ui/Section";
 import { AnimatedCounter } from "@/shared/ui/AnimatedCounter";
+import { CERTIFICATE_IMAGES } from "@/shared/config/images";
 
 const CHECK_ITEMS = [
   "Personal certificate global support for birth, marriage, and other personal document types.",
@@ -19,25 +22,28 @@ const STATS = [
 
 const PHOTOS = [
   {
-    src: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
-    alt: "Documents and certificates prepared for global processing",
-    title: "Document handling",
-    copy: "Professional paperwork management supports accurate and timely global.",
+    ...CERTIFICATE_IMAGES.signing,
+    title: "Certificate handling",
+    copy: "Personal, educational, and commercial certificates prepared for attestation.",
     className: "photo-main",
+    width: 1200,
+    height: 800,
   },
   {
-    src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80",
-    alt: "Legal paperwork review for certificate global",
+    ...CERTIFICATE_IMAGES.archive,
     title: "Verification review",
     copy: "Each document is checked against the process path required by destination authorities.",
     className: "photo-small",
+    width: 900,
+    height: 600,
   },
   {
-    src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
-    alt: "Customer consultation for international global service",
-    title: "Client consultation",
-    copy: "Our team helps customers understand the process before documents move forward.",
+    ...CERTIFICATE_IMAGES.education,
+    title: "Educational certificates",
+    copy: "Degrees, diplomas, and school records handled for embassy and MOFA attestation.",
     className: "photo-small",
+    width: 900,
+    height: 600,
   },
 ] as const;
 
@@ -88,8 +94,8 @@ export function AboutSection() {
               <OptimizedImage
                 src={PHOTOS[0].src}
                 alt={PHOTOS[0].alt}
-                width={1200}
-                height={800}
+                width={PHOTOS[0].width}
+                height={PHOTOS[0].height}
                 loading="lazy"
                 quality={70}
                 sizes="(max-width: 860px) 100vw, 600px"
@@ -105,8 +111,8 @@ export function AboutSection() {
                   <OptimizedImage
                     src={photo.src}
                     alt={photo.alt}
-                    width={900}
-                    height={600}
+                    width={photo.width}
+                    height={photo.height}
                     loading="lazy"
                     quality={70}
                     sizes="(max-width: 860px) 100vw, 400px"

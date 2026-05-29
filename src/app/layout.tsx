@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
+import { HERO_IMAGE } from "@/shared/config/images";
 import { siteMetadata, themeInitScript } from "@/shared/config/seo";
 import { SITE_URL } from "@/shared/config/site";
 import { JsonLd } from "@/shared/ui/JsonLd/JsonLd";
 import "@/shared/styles/globals.css";
-
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=75";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

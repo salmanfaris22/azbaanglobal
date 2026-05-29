@@ -17,27 +17,13 @@ import { SiteHeader } from "@/widgets/site-header";
 import { SiteFooter } from "@/widgets/site-footer";
 import { HeroSection } from "@/widgets/hero-section";
 import { ServicesSection } from "@/widgets/services-section";
-
-const AboutSection = dynamic(
-  () =>
-    import("@/widgets/about-section").then((mod) => ({
-      default: mod.AboutSection,
-    })),
-  { loading: () => <SectionPlaceholder /> },
-);
+import { AboutSection } from "@/widgets/about-section";
+import { ConsulatesSection } from "@/widgets/consulates-section";
 
 const CountriesSection = dynamic(
   () =>
     import("@/widgets/countries-section").then((mod) => ({
       default: mod.CountriesSection,
-    })),
-  { loading: () => <SectionPlaceholder /> },
-);
-
-const ConsulatesSection = dynamic(
-  () =>
-    import("@/widgets/consulates-section").then((mod) => ({
-      default: mod.ConsulatesSection,
     })),
   { loading: () => <SectionPlaceholder /> },
 );

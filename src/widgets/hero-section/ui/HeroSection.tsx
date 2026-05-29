@@ -10,8 +10,7 @@ import { Section } from "@/shared/ui/Section";
 import { AnimatedCounter } from "@/shared/ui/AnimatedCounter";
 import { useHeroTilt } from "@/shared/hooks/useHeroTilt";
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80";
+import { HERO_IMAGE } from "@/shared/config/images";
 
 const FEATURES = [
   {
