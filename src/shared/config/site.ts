@@ -5,13 +5,13 @@ export const SITE = {
   name: "Azbaan global",
   tagline: "International global Services in UAE",
   logoSrc: "/logo.jpeg",
-  email: "info@Azbaanglobal.com",
+  email: "delhi@azbaanglobal.com",
   phoneUae: "+971 4 338 8893",
   phoneIndia: "+91 79027 77751",
   phoneIndiaAlt: "+91 79027 77721",
-  whatsapp: "917902777751",
+  whatsapp: "917902777721",
   whatsappMessage: "Hello%azbaan%20global",
-  office: "Al Tawhidi Building 1, Office #502, Burdubai, Dubai, UAE",
+  office: "OFFICE No-122,ANTRIKSH BHAWAN 22,K.G MARG,CONNAUGHT PLACE NEW DELHI-110001",
 } as const;
 
 export const NAV_LINKS = [
