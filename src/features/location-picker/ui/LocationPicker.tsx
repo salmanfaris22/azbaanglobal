@@ -1,12 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Container } from "@/shared/ui/Container";
 import { Section, SectionHead } from "@/shared/ui/Section";
 import { DEFAULT_LOCATION, LOCATIONS, type Location } from "@/entities/location";
 
 export function LocationPicker() {
   const [active, setActive] = useState<Location>(DEFAULT_LOCATION);
+  const [mapVisible, setMapVisible] = useState(false);
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mapEl = mapRef.current;
+    if (!mapEl) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setMapVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "240px" },
+    );
+
+    observer.observe(mapEl);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Section id="locations">
@@ -33,15 +53,19 @@ export function LocationPicker() {
           </div>
 
           <div>
-            <div className="location-map">
-              <iframe
-                id="mapFrame"
-                title={`${active.seoTitle} — map at ${active.lat}, ${active.lng}`}
-                src={active.map}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            <div className="location-map" ref={mapRef}>
+              {mapVisible ? (
+                <iframe
+                  id="mapFrame"
+                  title={`${active.seoTitle} — map at ${active.lat}, ${active.lng}`}
+                  src={active.map}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="location-map__placeholder" aria-hidden="true" />
+              )}
             </div>
 
             <div className="location-info" id="locationInfo" itemScope itemType="https://schema.org/LocalBusiness">

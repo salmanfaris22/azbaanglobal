@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/shared/config/site";
 import { cn } from "@/shared/lib/cn";
@@ -18,13 +17,14 @@ export function Brand({
 }: BrandProps) {
   const content = (
     <>
-      <Image
+      {/* Small local logo — plain img avoids next/image LCP competition with hero */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={SITE.logoSrc}
         alt={`${SITE.name} logo`}
         width={48}
         height={48}
-        priority
-        sizes="48px"
+        decoding="async"
         style={{ borderRadius: "60px", marginRight: "12px" }}
       />
       <span className="brand-copy">

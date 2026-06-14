@@ -25,6 +25,9 @@ export function SiteFooter() {
               {link.label}
             </a>
           ))}
+          <a href="/attestation-services-delhi">Delhi attestation</a>
+          <a href="/attestation-services-dubai">Dubai attestation</a>
+          <a href="/attestation-services-kochi">Kochi attestation</a>
         </div>
       </Container>
     </footer>

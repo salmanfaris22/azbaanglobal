@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
-import { HERO_IMAGE } from "@/shared/config/images";
 import { siteMetadata, themeInitScript } from "@/shared/config/seo";
-import { SITE_URL } from "@/shared/config/site";
 import { JsonLd } from "@/shared/ui/JsonLd/JsonLd";
 import "@/shared/styles/globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   variable: "--font-plus-jakarta",
   display: "swap",
   preload: true,
@@ -18,10 +16,10 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
   variable: "--font-cormorant",
   display: "swap",
-  preload: true,
+  preload: false,
   adjustFontFallback: true,
 });
 
@@ -40,16 +38,6 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://indexauh.com" />
-        <link rel="dns-prefetch" href="https://indexauh.com" />
-        <link rel="dns-prefetch" href="https://www.talentattestation.com" />
-        <link rel="dns-prefetch" href="https://www.embassyattestation.co.in" />
-        <link rel="dns-prefetch" href="https://images.shiksha.com" />
-        <link rel="dns-prefetch" href="https://www.nobroker.in" />
-        <link rel="preconnect" href="https://flagcdn.com" />
-        <link rel="dns-prefetch" href="https://flagcdn.com" />
-        <link rel="canonical" href={SITE_URL} />
-        <link rel="preload" as="image" href={HERO_IMAGE.src} fetchPriority="high" />
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInitScript}
         </Script>

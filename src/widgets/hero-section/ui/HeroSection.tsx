@@ -106,7 +106,7 @@ export function HeroSection() {
             </LoadIn>
           </div>
 
-          <LoadIn delay="0.22s" className="hero-stage">
+          <div className="hero-stage">
             <div className="hero-photo-card" id="heroTilt" ref={tiltRef}>
               <OptimizedImage
                 className="hero-photo"
@@ -115,6 +115,8 @@ export function HeroSection() {
                 width={1200}
                 height={800}
                 priority
+                fetchPriority="high"
+                unoptimized
                 quality={80}
                 sizes="(max-width: 860px) 100vw, 560px"
               />
@@ -130,7 +132,7 @@ export function HeroSection() {
                 <span>{stat.label}</span>
               </div>
             ))}
-          </LoadIn>
+          </div>
         </div>
 
         <Reveal className="trust-bar">

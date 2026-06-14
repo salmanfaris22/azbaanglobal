@@ -9,19 +9,25 @@ import {
   FAQ_ENTRIES,
   SEO_KEYWORDS,
 } from "./seo-keywords";
+import { LOCATION_PAGES } from "./location-pages";
+import { ORGANIZATION_SAME_AS } from "./social";
 import { SITE, SITE_URL } from "./site";
 
 const ogImageAlt = HERO_IMAGE.alt;
 const ogImageFallback = HERO_IMAGE.src;
 
 function buildLocalBusinessNodes() {
-  return LOCATIONS.map((location) => ({
+  return LOCATIONS.map((location) => {
+    const cityPage = LOCATION_PAGES.find((page) => page.locationKey === location.key);
+    const pageUrl = cityPage ? `${SITE_URL}/${cityPage.slug}` : `${SITE_URL}/#locations`;
+
+    return {
     "@type": "LocalBusiness" as const,
     "@id": `${SITE_URL}/#location-${location.key}`,
     name: location.seoTitle,
     alternateName: [BRAND.shortName, BRAND.name],
     description: `${BRAND.name} provides ${location.seoKeywords[0]} at ${location.title}. Contact Azbaan for certificate attestation, apostille, MOFA, and embassy support.`,
-    url: `${SITE_URL}/#locations`,
+    url: pageUrl,
     image: ogImageFallback,
     email: SITE.email,
     telephone: [location.phone1.trim(), location.phone2.trim()].filter(Boolean),
@@ -46,7 +52,8 @@ function buildLocalBusinessNodes() {
     },
     knowsAbout: location.seoKeywords,
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
-  }));
+  };
+  });
 }
 
 function buildCountryListNode() {
@@ -108,7 +115,7 @@ export const structuredData = {
       email: SITE.email,
       telephone: [SITE.phoneUae, SITE.phoneIndiaAlt],
       logo: `${SITE_URL}${SITE.logoSrc}`,
-      sameAs: [SITE_URL],
+      sameAs: ORGANIZATION_SAME_AS,
       address: {
         "@type": "PostalAddress",
         streetAddress: LOCATIONS[0].streetAddress,
