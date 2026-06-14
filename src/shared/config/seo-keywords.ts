@@ -54,10 +54,10 @@ export const SEO_KEYWORDS = [
 ] as const;
 
 export const DEFAULT_TITLE =
-  "Azbaan global | Best Attestation Services in Dubai, Delhi & India";
+  "Azbaan global | Best Attestation in Dubai & Delhi";
 
 export const DEFAULT_DESCRIPTION =
-  "Azbaan (Azbaan global) at azbaanglobal.com offers top attestation services — certificate attestation, apostille, MOFA, embassy, and consulate legalization in Dubai, Delhi, Kochi, Mumbai, Qatar, and 40+ countries.";
+  "Azbaan global offers certificate attestation, apostille, MOFA, and embassy legalization in Dubai, Delhi, Kochi, and 40+ countries. Fast, legal, reliable.";
 
 export const FAQ_ENTRIES = [
   {

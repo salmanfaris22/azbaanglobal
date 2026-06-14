@@ -16,6 +16,7 @@ import { ThemeProvider } from "@/features/theme";
 import { SiteHeader } from "@/widgets/site-header";
 import { SiteFooter } from "@/widgets/site-footer";
 import { HeroSection } from "@/widgets/hero-section";
+import { SeoContentSection } from "@/widgets/seo-content-section";
 import { ServicesSection } from "@/widgets/services-section";
 import { AboutSection } from "@/widgets/about-section";
 import { ConsulatesSection } from "@/widgets/consulates-section";
@@ -121,6 +122,7 @@ export function HomePageClient() {
         <ProcessSection />
         <BlogSection />
         <LocationPicker />
+        <SeoContentSection />
         <FaqSection />
         <ContactSection />
       </main>

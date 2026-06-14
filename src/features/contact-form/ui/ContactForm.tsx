@@ -69,12 +69,7 @@ export function ContactForm() {
         <Button
           type="submit"
           id="submitButton"
-          className={isSuccess ? "button-primary" : undefined}
-          style={
-            isSuccess
-              ? { background: "linear-gradient(135deg, #2ea66b, #127b52)" }
-              : undefined
-          }
+          className={isSuccess ? "button-primary button-primary--success" : undefined}
         >
           {submitLabel}
         </Button>

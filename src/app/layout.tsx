@@ -24,6 +24,8 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = siteMetadata;
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,6 +44,17 @@ export default function RootLayout({
         </Script>
       </head>
       <body className={plusJakarta.className}>
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}');`}
+            </Script>
+          </>
+        ) : null}
         <JsonLd />
         {children}
       </body>

@@ -17,15 +17,14 @@ export function Brand({
 }: BrandProps) {
   const content = (
     <>
-      {/* Small local logo — plain img avoids next/image LCP competition with hero */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
+        className="brand__logo"
         src={SITE.logoMarkSrc}
         alt={`${SITE.name} logo`}
         width={48}
         height={48}
         decoding="async"
-        style={{ borderRadius: "60px", marginRight: "12px" }}
       />
       <span className="brand-copy">
         <strong className={showTagline ? undefined : "brand-text"}>
