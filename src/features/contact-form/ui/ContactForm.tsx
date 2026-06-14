@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { trackContactFormSubmit } from "@/shared/lib/analytics";
 import { Button } from "@/shared/ui/Button";
 import { Reveal } from "@/shared/ui/Reveal";
 import { SERVICE_FORM_OPTIONS } from "@/entities/service";
@@ -14,6 +15,7 @@ export function ContactForm() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    trackContactFormSubmit();
     setSubmitLabel("Inquiry Sent");
     setIsSuccess(true);
     setNote(

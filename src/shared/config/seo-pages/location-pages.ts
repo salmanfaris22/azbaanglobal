@@ -211,4 +211,46 @@ export const LOCATION_SEO_PAGES: LocationSeoPage[] = [
       "apostille-services-india",
     ],
   },
+  {
+    kind: "location",
+    slug: "attestation-services-qatar",
+    locationKey: "qatar",
+    keyword: "attestation services Qatar",
+    title: "Attestation Services Qatar | Azbaan global — Document Legalization",
+    description:
+      "Azbaan global attestation services for Qatar — Indian MEA, embassy, and commercial document legalization for Doha employment, visa, and business use.",
+    h1: "Attestation services for Qatar",
+    intro:
+      "Azbaan global supports document attestation for Qatar employment, family visa, and business setup. We guide Indian personal, educational, and commercial certificates through MEA, embassy, and Qatar ministry requirements.",
+    body: [
+      "Qatar-bound documents from India require careful sequencing through state verification, MEA attestation, and Qatar embassy steps before ministry approval in Doha. Azbaan global helps customers avoid QVC and visa delays caused by incomplete legalization.",
+      "We assist professionals, families, and companies with degree attestation, birth and marriage certificates, experience letters, and commercial paperwork for Qatar sponsors and employers.",
+    ],
+    services: [
+      "Degree and educational certificate attestation for Qatar",
+      "Personal document attestation for family visa",
+      "Commercial and company document legalization",
+      "Indian MEA and embassy coordination for Qatar",
+      "Document bundle review before QVC submission",
+    ],
+    faq: [
+      {
+        question: "Does Azbaan global provide attestation for Qatar from India?",
+        answer:
+          "Yes. Azbaan global coordinates Indian attestation services for Qatar visa and employment documents with guidance on MEA, embassy, and ministry requirements.",
+      },
+      {
+        question: "Which documents are attested for Qatar employment?",
+        answer:
+          "Common documents include degrees, experience certificates, passports copies, birth and marriage certificates, and police clearance. Employers may request additional attestations — Azbaan confirms your sponsor list.",
+      },
+    ],
+    sitemapPriority: 0.88,
+    relatedSlugs: [
+      "commercial-document-attestation",
+      "indian-attestation-services",
+      "degree-attestation-uae",
+      "attestation-services-delhi",
+    ],
+  },
 ];

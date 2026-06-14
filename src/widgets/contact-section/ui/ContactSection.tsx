@@ -1,5 +1,8 @@
+"use client";
+
 import { LOCATIONS } from "@/entities/location";
 import { SITE, WHATSAPP_URL, MAILTO_URL } from "@/shared/config/site";
+import { trackWhatsAppClick } from "@/shared/lib/analytics";
 import { WhatsAppIcon } from "@/shared/ui/icons/WhatsAppIcon";
 import { Container } from "@/shared/ui/Container";
 import { Reveal } from "@/shared/ui/Reveal";
@@ -33,6 +36,7 @@ export function ContactSection() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
+              onClick={() => trackWhatsAppClick("contact_section")}
             >
               <span className="contact-chip__icon" aria-hidden="true">
                 <WhatsAppIcon />

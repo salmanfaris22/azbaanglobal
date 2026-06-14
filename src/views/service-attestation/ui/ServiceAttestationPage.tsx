@@ -2,7 +2,9 @@ import Link from "next/link";
 import { LOCATIONS } from "@/entities/location/model/locations";
 import type { ServiceSeoPage } from "@/shared/config/seo-pages";
 import { getPagesByKind, getRelatedPages } from "@/shared/config/seo-pages";
+import { buildSeoPageBreadcrumbs } from "@/shared/lib/seoPageSeo";
 import { WHATSAPP_URL, SITE } from "@/shared/config/site";
+import { Breadcrumbs } from "@/shared/ui/Breadcrumbs";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
 
@@ -15,11 +17,13 @@ export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
   const locationPages = getPagesByKind("location").filter((entry) =>
     page.relatedLocations.includes(entry.locationKey),
   );
+  const breadcrumbs = buildSeoPageBreadcrumbs(page);
 
   return (
     <article className="location-page service-page">
       <section className="location-hero section">
         <Container>
+          <Breadcrumbs items={breadcrumbs} />
           <p className="location-hero__eyebrow">
             <Link href="/">Azbaan global</Link> · {page.serviceType}
           </p>

@@ -7,9 +7,17 @@ import { HERO_IMAGE } from "@/shared/config/images";
 import { BRAND } from "@/shared/config/seo-keywords";
 import { ORGANIZATION_SAME_AS } from "@/shared/config/social";
 import { SITE, SITE_URL } from "@/shared/config/site";
+import { buildBreadcrumbSchema, type BreadcrumbItem } from "@/shared/lib/breadcrumbs";
 
 function pagePath(slug: string) {
   return `/${slug}`;
+}
+
+export function buildSeoPageBreadcrumbs(page: SeoPage): BreadcrumbItem[] {
+  return [
+    { label: "Home", href: "/" },
+    { label: page.h1, href: pagePath(page.slug) },
+  ];
 }
 
 export function buildSeoPageMetadata(page: SeoPage): Metadata {
@@ -59,12 +67,15 @@ function buildFaqNode(page: SeoPage, pageUrl: string) {
 export function buildLocationPageStructuredData(
   page: LocationSeoPage,
   location: Location,
+  breadcrumbs?: BreadcrumbItem[],
 ) {
   const pageUrl = `${SITE_URL}/${page.slug}`;
+  const crumbItems = breadcrumbs ?? buildSeoPageBreadcrumbs(page);
 
   return {
     "@context": "https://schema.org",
     "@graph": [
+      buildBreadcrumbSchema(crumbItems),
       {
         "@type": "WebPage",
         "@id": `${pageUrl}/#webpage`,
@@ -116,8 +127,12 @@ export function buildLocationPageStructuredData(
   };
 }
 
-export function buildServicePageStructuredData(page: ServiceSeoPage) {
+export function buildServicePageStructuredData(
+  page: ServiceSeoPage,
+  breadcrumbs?: BreadcrumbItem[],
+) {
   const pageUrl = `${SITE_URL}/${page.slug}`;
+  const crumbItems = breadcrumbs ?? buildSeoPageBreadcrumbs(page);
   const servedLocations = page.relatedLocations
     .map((key) => LOCATIONS.find((entry) => entry.key === key))
     .filter(Boolean);
@@ -125,6 +140,7 @@ export function buildServicePageStructuredData(page: ServiceSeoPage) {
   return {
     "@context": "https://schema.org",
     "@graph": [
+      buildBreadcrumbSchema(crumbItems),
       {
         "@type": "WebPage",
         "@id": `${pageUrl}/#webpage`,
@@ -161,10 +177,10 @@ export function buildSeoPageStructuredData(page: SeoPage, location?: Location) {
     if (!location) {
       throw new Error(`Location required for page ${page.slug}`);
     }
-    return buildLocationPageStructuredData(page, location);
+    return buildLocationPageStructuredData(page, location, buildSeoPageBreadcrumbs(page));
   }
 
-  return buildServicePageStructuredData(page);
+  return buildServicePageStructuredData(page, buildSeoPageBreadcrumbs(page));
 }
 
 /** @deprecated Use buildSeoPageMetadata instead. */

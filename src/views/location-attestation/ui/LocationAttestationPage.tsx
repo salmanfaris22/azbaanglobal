@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { Location } from "@/entities/location/model/locations";
 import type { LocationSeoPage } from "@/shared/config/seo-pages";
 import { getPagesByKind, getRelatedPages } from "@/shared/config/seo-pages";
+import { buildSeoPageBreadcrumbs } from "@/shared/lib/seoPageSeo";
 import { WHATSAPP_URL, SITE } from "@/shared/config/site";
+import { Breadcrumbs } from "@/shared/ui/Breadcrumbs";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
 
@@ -14,11 +16,13 @@ type LocationAttestationPageProps = {
 export function LocationAttestationPage({ page, location }: LocationAttestationPageProps) {
   const relatedPages = getRelatedPages(page);
   const servicePages = getPagesByKind("service").slice(0, 4);
+  const breadcrumbs = buildSeoPageBreadcrumbs(page);
 
   return (
     <article className="location-page">
       <section className="location-hero section">
         <Container>
+          <Breadcrumbs items={breadcrumbs} />
           <p className="location-hero__eyebrow">
             <Link href="/">Azbaan global</Link> · {location.label}
           </p>

@@ -2,11 +2,10 @@
 
 > Professional attestation, apostille, MOFA, embassy, and consulate legalization services in the UAE, India, and 40+ countries.
 
-Azbaan global (also known as Azbaan) helps individuals and businesses authenticate personal, educational, and commercial documents for international use. Offices in Dubai, Delhi, Kochi, Kozhikode, and Mumbai support certificate attestation workflows for UAE MOFA, Indian HRD/MEA, and destination-country embassy requirements.
-
 ## Primary pages
 
 - Home: https://azbaanglobal.com/
+- Blog index: https://azbaanglobal.com/blog
 - Sitemap: https://azbaanglobal.com/sitemap.xml
 
 ## City attestation pages
@@ -16,6 +15,7 @@ Azbaan global (also known as Azbaan) helps individuals and businesses authentica
 - Kochi: https://azbaanglobal.com/attestation-services-kochi
 - Mumbai: https://azbaanglobal.com/attestation-services-mumbai
 - Kozhikode: https://azbaanglobal.com/attestation-services-kozhikode
+- Qatar: https://azbaanglobal.com/attestation-services-qatar
 
 ## Service attestation pages
 
@@ -26,33 +26,22 @@ Azbaan global (also known as Azbaan) helps individuals and businesses authentica
 - Commercial document attestation: https://azbaanglobal.com/commercial-document-attestation
 - Apostille services India: https://azbaanglobal.com/apostille-services-india
 
-## Core services
+## Blog guides
 
-- Personal certificate attestation (birth, marriage, and civil documents)
-- Educational certificate attestation (school, diploma, degree, and university records)
-- Commercial document attestation and company paperwork legalization
-- MOFA attestation and UAE ministry coordination
-- Embassy and consulate attestation
-- Apostille services for Hague Convention destinations
-- Indian attestation services (Delhi, Kochi, Kozhikode, Mumbai)
-
-## Office locations
-
-### Dubai, UAE
-Sheikha Mhara Building, Office No 218/16, 2nd Floor, Near Al Twar Center, Al Qusais, Dubai
-
-### Delhi, India
-Office No-122, Antriksh Bhawan, 22 K.G Marg, Connaught Place, New Delhi 110001
-
-### Kochi, India
-X77Q+F2W, Pallimukku, Kochi, Ernakulam, Kerala 682016
-
-### Kozhikode, India
-Room No. 63/3617, Ground, CD Tower, New Bus Stand, EMS Stadium, Arayidathupalam, Kozhikode, Kerala 673004
+- How to attest degree for UAE: https://azbaanglobal.com/blog/how-to-attest-degree-for-uae
+- MOFA attestation steps Dubai: https://azbaanglobal.com/blog/mofa-attestation-steps-dubai
+- Indian birth certificate attestation UAE: https://azbaanglobal.com/blog/indian-birth-certificate-attestation-uae
+- Attestation vs apostille: https://azbaanglobal.com/blog/attestation-vs-apostille-difference
+- HRD MEA attestation India: https://azbaanglobal.com/blog/hrd-mea-attestation-india-guide
+- Commercial document attestation UAE: https://azbaanglobal.com/blog/commercial-document-attestation-uae-business
+- Marriage certificate attestation UAE: https://azbaanglobal.com/blog/marriage-certificate-attestation-uae-family-visa
+- Attestation services Delhi guide: https://azbaanglobal.com/blog/attestation-services-delhi-step-by-step
+- Kerala degree attestation UAE: https://azbaanglobal.com/blog/kerala-degree-attestation-uae-from-kochi
+- Qatar document attestation: https://azbaanglobal.com/blog/qatar-document-attestation-from-india-uae
+- UAE attestation timelines: https://azbaanglobal.com/blog/how-long-does-uae-attestation-take
 
 ## Contact
 
-- Website: https://azbaanglobal.com
 - Phone (India): +91 79027 77751
 - Phone (UAE): +971 4 338 8893
 - WhatsApp: https://wa.me/917902777751
@@ -60,7 +49,3 @@ Room No. 63/3617, Ground, CD Tower, New Bus Stand, EMS Stadium, Arayidathupalam,
 ## Brand aliases
 
 Azbaan, Azbaan global, azbaanglobal, azbaanglobal.com
-
-## Optional
-
-Full structured data (Organization, LocalBusiness, Service, FAQPage) is available in JSON-LD across landing pages.

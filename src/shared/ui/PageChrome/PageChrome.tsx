@@ -1,5 +1,8 @@
+"use client";
+
 import type { RefObject } from "react";
 import { SITE, WHATSAPP_URL, TEL_UAE_URL, MAILTO_URL } from "@/shared/config/site";
+import { trackWhatsAppClick } from "@/shared/lib/analytics";
 import { WhatsAppIcon } from "@/shared/ui/icons/WhatsAppIcon";
 
 export function SkipLink() {
@@ -38,6 +41,7 @@ export function ContactRail() {
         rel="noreferrer"
         aria-label="Chat on WhatsApp"
         title="Chat on WhatsApp"
+        onClick={() => trackWhatsAppClick("contact_rail")}
       >
         <WhatsAppIcon />
       </a>
@@ -70,6 +74,7 @@ export function FloatingWhatsApp() {
       rel="noreferrer"
       aria-label="Open direct WhatsApp chat"
       title="Direct WhatsApp"
+      onClick={() => trackWhatsAppClick("floating_whatsapp")}
     >
       <span className="floating-whatsapp__label">Direct WhatsApp</span>
       <WhatsAppIcon />

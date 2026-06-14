@@ -4,6 +4,7 @@ import { NAV_LINKS, SITE, TEL_UAE_URL } from "@/shared/config/site";
 import { LOCATIONS } from "@/entities/location";
 import { Brand } from "@/shared/ui/Brand";
 import { Container } from "@/shared/ui/Container";
+import Link from "next/link";
 
 const FOOTER_OFFICES = LOCATIONS.filter((location) =>
   ["dubai", "delhi", "kochi", "kozhikode", "mumbai"].includes(location.key),
@@ -50,6 +51,13 @@ export function SiteFooter() {
                 {link.label}
               </a>
             ))}
+          </div>
+
+          <div className="footer-seo-links">
+            <h2 className="footer-contact__title">Blog</h2>
+            <div className="footer-links">
+              <Link href="/blog">All attestation guides</Link>
+            </div>
           </div>
 
           <div className="footer-seo-links">

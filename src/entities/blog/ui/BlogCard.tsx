@@ -1,4 +1,5 @@
-import type { BlogPost } from "../model/posts";
+import Link from "next/link";
+import type { BlogPost } from "../model/types";
 
 type BlogCardProps = {
   post: BlogPost;
@@ -6,10 +7,11 @@ type BlogCardProps = {
 
 export function BlogCard({ post }: BlogCardProps) {
   return (
-    <article className="blog-card">
+    <Link href={`/blog/${post.slug}`} className="blog-card blog-card--link">
       <span className="blog-meta">{post.meta}</span>
       <strong>{post.title}</strong>
       <p>{post.description}</p>
-    </article>
+      <span className="card-link">Read article</span>
+    </Link>
   );
 }

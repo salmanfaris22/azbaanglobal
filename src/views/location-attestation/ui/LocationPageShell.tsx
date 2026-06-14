@@ -25,6 +25,7 @@ export function LocationPageShell({ children }: { children: React.ReactNode }) {
           <Brand href="/" showTagline={false} ariaLabel="Azbaan global home" />
           <nav className="location-subnav" aria-label="Subpage navigation">
             <Link href="/">Home</Link>
+            <Link href="/blog">Blog</Link>
             <Link href="/#services">Services</Link>
             <Link href="/#contact">Contact</Link>
             <ThemeToggle />
