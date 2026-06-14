@@ -16,6 +16,7 @@ export type SeoPageBase = {
   services: readonly string[];
   faq: readonly SeoFaqEntry[];
   sitemapPriority: number;
+  sitemapLastModified?: string;
   relatedSlugs: readonly string[];
 };
 
@@ -30,7 +31,13 @@ export type ServiceSeoPage = SeoPageBase & {
   relatedLocations: readonly LocationKey[];
 };
 
-export type SeoPage = LocationSeoPage | ServiceSeoPage;
+export type CountrySeoPage = SeoPageBase & {
+  kind: "country";
+  countryCode: string;
+  countryName: string;
+};
+
+export type SeoPage = LocationSeoPage | ServiceSeoPage | CountrySeoPage;
 
 export function isLocationPage(page: SeoPage): page is LocationSeoPage {
   return page.kind === "location";
@@ -38,4 +45,8 @@ export function isLocationPage(page: SeoPage): page is LocationSeoPage {
 
 export function isServicePage(page: SeoPage): page is ServiceSeoPage {
   return page.kind === "service";
+}
+
+export function isCountryPage(page: SeoPage): page is CountrySeoPage {
+  return page.kind === "country";
 }

@@ -14,10 +14,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  return buildLocalizedSeoMetadata(slug, "en");
+  return buildLocalizedSeoMetadata(slug, "hi");
 }
 
-export default async function SeoLandingPage({ params }: PageProps) {
+export default async function HindiSeoLandingPage({ params }: PageProps) {
   const { slug } = await params;
-  return renderSeoLandingPage({ slug, locale: "en" });
+  return renderSeoLandingPage({ slug, locale: "hi" });
 }

@@ -14,6 +14,7 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   const locationPages = getPagesByKind("location");
   const servicePages = getPagesByKind("service");
+  const countryPages = getPagesByKind("country");
 
   return (
     <footer className="footer">
@@ -64,6 +65,17 @@ export function SiteFooter() {
             <h2 className="footer-contact__title">City pages</h2>
             <div className="footer-links">
               {locationPages.map((page) => (
+                <a key={page.slug} href={`/${page.slug}`}>
+                  {page.h1}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-seo-links">
+            <h2 className="footer-contact__title">Country pages</h2>
+            <div className="footer-links">
+              {countryPages.map((page) => (
                 <a key={page.slug} href={`/${page.slug}`}>
                   {page.h1}
                 </a>

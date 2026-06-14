@@ -1,9 +1,18 @@
+import { COUNTRY_SEO_PAGES } from "./country-pages";
 import { LOCATION_SEO_PAGES } from "./location-pages";
 import { SERVICE_SEO_PAGES } from "./service-pages";
-import type { LocationSeoPage, SeoPage, ServiceSeoPage } from "./types";
-import { isLocationPage, isServicePage } from "./types";
+import type {
+  LocationSeoPage,
+  SeoPage,
+  ServiceSeoPage,
+} from "./types";
+import { isCountryPage, isLocationPage, isServicePage } from "./types";
 
-export const ALL_SEO_PAGES: SeoPage[] = [...LOCATION_SEO_PAGES, ...SERVICE_SEO_PAGES];
+export const ALL_SEO_PAGES: SeoPage[] = [
+  ...LOCATION_SEO_PAGES,
+  ...SERVICE_SEO_PAGES,
+  ...COUNTRY_SEO_PAGES,
+];
 
 export const SEO_PAGE_BY_SLUG = Object.fromEntries(
   ALL_SEO_PAGES.map((page) => [page.slug, page]),
@@ -36,12 +45,8 @@ export function getRelatedPages(page: SeoPage): SeoPage[] {
     .filter((entry): entry is SeoPage => Boolean(entry));
 }
 
-export function getPagesByKind<K extends SeoPage["kind"]>(
-  kind: K,
-): K extends "location" ? LocationSeoPage[] : ServiceSeoPage[] {
-  return ALL_SEO_PAGES.filter((page) => page.kind === kind) as K extends "location"
-    ? LocationSeoPage[]
-    : ServiceSeoPage[];
+export function getPagesByKind(kind: SeoPage["kind"]): SeoPage[] {
+  return ALL_SEO_PAGES.filter((page) => page.kind === kind);
 }
 
-export { isLocationPage, isServicePage };
+export { isCountryPage, isLocationPage, isServicePage };

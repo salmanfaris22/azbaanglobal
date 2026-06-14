@@ -1,7 +1,10 @@
 import Link from "next/link";
 import { LOCATIONS } from "@/entities/location/model/locations";
-import type { ServiceSeoPage } from "@/shared/config/seo-pages";
-import { getPagesByKind, getRelatedPages } from "@/shared/config/seo-pages";
+import type { LocationSeoPage, ServiceSeoPage } from "@/shared/config/seo-pages";
+import { getPagesByKind, getRelatedPages, isLocationPage } from "@/shared/config/seo-pages";
+import type { Locale } from "@/shared/config/i18n";
+import { localizedPath, t } from "@/shared/config/i18n";
+import { applyLocaleToSeoPage } from "@/shared/lib/localeSeo";
 import { buildSeoPageBreadcrumbs } from "@/shared/lib/seoPageSeo";
 import { WHATSAPP_URL, SITE } from "@/shared/config/site";
 import { Breadcrumbs } from "@/shared/ui/Breadcrumbs";
@@ -10,14 +13,18 @@ import { Button } from "@/shared/ui/Button";
 
 type ServiceAttestationPageProps = {
   page: ServiceSeoPage;
+  locale?: Locale;
 };
 
-export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
+export function ServiceAttestationPage({ page, locale = "en" }: ServiceAttestationPageProps) {
+  const localized = applyLocaleToSeoPage(page, locale);
   const relatedPages = getRelatedPages(page);
-  const locationPages = getPagesByKind("location").filter((entry) =>
-    page.relatedLocations.includes(entry.locationKey),
+  const locationPages: LocationSeoPage[] = getPagesByKind("location").filter(
+    (entry): entry is LocationSeoPage =>
+      isLocationPage(entry) && page.relatedLocations.includes(entry.locationKey),
   );
-  const breadcrumbs = buildSeoPageBreadcrumbs(page);
+  const breadcrumbs = buildSeoPageBreadcrumbs(page, locale);
+  const homeHref = localizedPath("/", locale);
 
   return (
     <article className="location-page service-page">
@@ -25,16 +32,16 @@ export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
         <Container>
           <Breadcrumbs items={breadcrumbs} />
           <p className="location-hero__eyebrow">
-            <Link href="/">Azbaan global</Link> · {page.serviceType}
+            <Link href={homeHref}>Azbaan global</Link> · {page.serviceType}
           </p>
-          <h1 className="location-hero__title">{page.h1}</h1>
-          <p className="location-hero__copy">{page.intro}</p>
+          <h1 className="location-hero__title">{localized.h1}</h1>
+          <p className="location-hero__copy">{localized.intro}</p>
           <div className="location-hero__actions">
             <a className="button-primary" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-              WhatsApp {SITE.phoneIndiaAlt}
+              {t(locale, "whatsApp")} {SITE.phoneIndiaAlt}
             </a>
-            <Button href="/#contact" variant="secondary">
-              Get a quote
+            <Button href={localizedPath("/#contact", locale)} variant="secondary">
+              {t(locale, "contactUs")}
             </Button>
           </div>
         </Container>
@@ -43,7 +50,9 @@ export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
       <section className="section section-alt">
         <Container className="location-grid">
           <div className="location-copy">
-            <h2>{page.keyword} — Azbaan global</h2>
+            <h2>
+              {page.keyword} — Azbaan global
+            </h2>
             {page.body.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -63,7 +72,9 @@ export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
                   <div key={entry.slug} className="service-office-card">
                     <strong>{location.label}</strong>
                     <span>{location.address}</span>
-                    <Link href={`/${entry.slug}`}>View {location.label} page</Link>
+                    <Link href={localizedPath(`/${entry.slug}`, locale)}>
+                      View {location.label} page
+                    </Link>
                   </div>
                 );
               })}
@@ -92,14 +103,17 @@ export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
 
       <section className="section section-alt location-related">
         <Container>
-          <h2>Related attestation services</h2>
+          <h2>{t(locale, "relatedPages")}</h2>
           <div className="location-related__links">
             {relatedPages.map((entry) => (
-              <Link key={entry.slug} href={`/${entry.slug}`}>
+              <Link
+                key={entry.slug}
+                href={localizedPath(`/${entry.slug}`, locale)}
+              >
                 {entry.h1}
               </Link>
             ))}
-            <Link href="/">Back to homepage</Link>
+            <Link href={homeHref}>{t(locale, "backHome")}</Link>
           </div>
         </Container>
       </section>

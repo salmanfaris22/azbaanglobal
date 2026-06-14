@@ -11,7 +11,9 @@ import {
 } from "./seo-keywords";
 import { ALL_SEO_PAGES } from "./seo-pages";
 import { ORGANIZATION_SAME_AS } from "./social";
+import { getAggregateRatingSchema } from "./reviews";
 import { SITE, SITE_URL } from "./site";
+import { buildHreflangAlternates } from "./i18n";
 
 const ogImageAlt = HERO_IMAGE.alt;
 const ogImageFallback = HERO_IMAGE.src;
@@ -89,6 +91,8 @@ function buildFaqNode() {
     })),
   };
 }
+
+const aggregateRating = getAggregateRatingSchema();
 
 export const structuredData = {
   "@context": "https://schema.org",
@@ -188,6 +192,7 @@ export const structuredData = {
           },
         ],
       },
+      ...(aggregateRating ? { aggregateRating } : {}),
     },
     buildCountryListNode(),
     buildFaqNode(),
@@ -236,6 +241,10 @@ export const siteMetadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+    languages: buildHreflangAlternates("/"),
+    types: {
+      "application/rss+xml": `${SITE_URL}/blog/rss.xml`,
+    },
   },
   formatDetection: {
     telephone: false,

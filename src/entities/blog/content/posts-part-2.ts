@@ -295,4 +295,102 @@ export const BLOG_POSTS_PART_2: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "attestation-for-canada-from-india-uae",
+    title: "Certificate Attestation for Canada from India & UAE",
+    description:
+      "How Indian and UAE documents are attested for Canada immigration, study, and employment — MEA, embassy, and IRCC-ready bundles.",
+    meta: "Canada · 8 min read",
+    publishedAt: "2025-06-08",
+    keyword: "attestation for Canada",
+    relatedServiceSlugs: ["degree-attestation-uae", "indian-attestation-services", "birth-certificate-attestation-uae"],
+    relatedLocationSlugs: ["attestation-services-delhi", "attestation-services-dubai", "attestation-for-canada"],
+    relatedBlogSlugs: ["how-to-attest-degree-for-uae", "how-long-does-uae-attestation-take"],
+    sections: [
+      {
+        heading: "Why Canada-bound documents need attestation",
+        paragraphs: [
+          "Canada immigration, university admission, and employer verification often require authenticated copies of degrees, marriage certificates, police clearance, and commercial records. Indian documents typically need state verification, MEA attestation, and sometimes Canadian embassy or consulate steps before IRCC or provincial bodies accept them.",
+          "UAE residents applying to Canada may hold Indian-origin certificates that must be attested in India or coordinated through Azbaan global offices in Dubai and Delhi.",
+        ],
+      },
+      {
+        heading: "Common documents for Canada applications",
+        paragraphs: [
+          "Educational certificates, transcripts, birth and marriage certificates, experience letters, and corporate documents are frequently requested. Each category follows a different Indian state or ministry route before MEA submission.",
+          "Azbaan global helps customers build Canada-ready bundles with consistent names, dates, and stamp placement to reduce IRCC or university resubmission requests.",
+        ],
+      },
+      {
+        heading: "UAE MOFA and Canada use cases",
+        paragraphs: [
+          "Some Canada-bound files originate in the UAE and require MOFA attestation before courier to immigration consultants. Others are attested entirely in India and shipped directly to Canada or to a representative.",
+          "Our attestation for Canada page outlines destination-specific requirements and links to degree and birth certificate service pages for related document types.",
+        ],
+      },
+      {
+        heading: "Timeline and planning tips",
+        paragraphs: [
+          "Canada application windows are strict. Start attestation when you receive an invitation to apply or admission offer—not when your visa deadline is days away.",
+          "Azbaan global provides realistic timelines after document review, including HRD or state queues that generic online quotes often ignore.",
+        ],
+      },
+      {
+        heading: "Get Canada attestation support",
+        paragraphs: [
+          "WhatsApp scans of your documents to Azbaan global for a Canada attestation checklist. Visit our attestation for Canada landing page and Delhi or Dubai office pages for contact details.",
+          "We serve customers across India, UAE, and 40+ destination countries with coordinated MEA and embassy support.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "uae-residence-visa-document-attestation-checklist",
+    title: "UAE Residence Visa Document Attestation Checklist",
+    description:
+      "Complete checklist for attesting personal and employment documents for UAE residence visa — degrees, PCC, marriage, and birth certificates.",
+    meta: "UAE visa · 9 min read",
+    publishedAt: "2025-06-12",
+    keyword: "UAE residence visa attestation",
+    relatedServiceSlugs: ["degree-attestation-uae", "mofa-attestation-uae", "birth-certificate-attestation-uae"],
+    relatedLocationSlugs: ["attestation-services-dubai", "attestation-services-delhi", "attestation-services-kochi"],
+    relatedBlogSlugs: ["marriage-certificate-attestation-uae-family-visa", "mofa-attestation-steps-dubai"],
+    sections: [
+      {
+        heading: "Documents employers and immigration ask for",
+        paragraphs: [
+          "UAE residence visa processing commonly requires attested educational certificates, experience letters, marriage and birth certificates for dependents, and sometimes police clearance or medical report support documents. Requirements vary by emirate, free zone, and sponsor type.",
+          "Submitting incomplete or incorrectly attested files is one of the most common causes of visa delays. A single checklist aligned to your sponsor’s PRO team saves weeks.",
+        ],
+      },
+      {
+        heading: "Indian certificate attestation chain",
+        paragraphs: [
+          "Most Indian personal documents pass through state home department or HRD verification, MEA attestation, UAE embassy attestation in India, and MOFA attestation in the UAE. Skipping a stage leads to rejection at immigration or typing centre.",
+          "Azbaan global Delhi, Kochi, Kozhikode, and Mumbai teams coordinate state steps before embassy submission; Dubai handles MOFA and final ministry attestation.",
+        ],
+      },
+      {
+        heading: "Family visa bundle consistency",
+        paragraphs: [
+          "Spouse and child visas require matching names across marriage and birth certificates, passports, and sponsor employment documents. Even minor spelling differences can trigger additional verification.",
+          "Pre-review with Azbaan global before first submission helps families avoid repeated courier runs between India and the UAE.",
+        ],
+      },
+      {
+        heading: "Employment and degree attestation",
+        paragraphs: [
+          "Skilled visa categories often need attested degrees and transcripts. HRD verification timelines depend on university and state queues. Plan attestation as soon as you receive a job offer letter.",
+          "See our degree attestation UAE and MOFA attestation guides for stage-by-stage detail on educational files.",
+        ],
+      },
+      {
+        heading: "Start your UAE visa attestation checklist",
+        paragraphs: [
+          "Contact Azbaan global with your visa type, emirate, and document list for a tailored UAE residence visa attestation checklist. Offices in Dubai and across India support WhatsApp document review.",
+          "Browse attestation services Dubai and related blog guides for marriage certificate and MOFA steps linked to family and employment visa cases.",
+        ],
+      },
+    ],
+  },
 ];

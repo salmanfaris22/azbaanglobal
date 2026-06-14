@@ -1,0 +1,2 @@
+# IndexNow key placeholder — replace INDEXNOW_KEY env with your verified key.
+# Bing/Yandex will fetch this file at https://azbaanglobal.com/{your-key}.txt

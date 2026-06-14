@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { BlogPost } from "@/entities/blog";
 import { BRAND } from "@/shared/config/seo-keywords";
 import { buildBreadcrumbSchema, type BreadcrumbItem } from "@/shared/lib/breadcrumbs";
+import { buildHreflangAlternates } from "@/shared/config/i18n";
 import { HERO_IMAGE } from "@/shared/config/images";
 import { SITE, SITE_URL } from "@/shared/config/site";
 
@@ -10,7 +11,13 @@ export function buildBlogIndexMetadata(): Metadata {
     title: { absolute: `Attestation Guides & Blog | ${BRAND.name}` },
     description:
       "Expert attestation guides for UAE, India, MOFA, degree, birth certificate, and commercial document legalization by Azbaan global.",
-    alternates: { canonical: "/blog" },
+    alternates: {
+      canonical: "/blog",
+      languages: buildHreflangAlternates("/blog"),
+      types: {
+        "application/rss+xml": `${SITE_URL}/blog/rss.xml`,
+      },
+    },
     openGraph: {
       title: `Attestation Guides & Blog | ${BRAND.name}`,
       description:
@@ -25,12 +32,16 @@ export function buildBlogIndexMetadata(): Metadata {
 
 export function buildBlogPostMetadata(post: BlogPost): Metadata {
   const path = `/blog/${post.slug}`;
+  const ogImage = `${SITE_URL}/blog/${post.slug}/opengraph-image`;
 
   return {
     title: { absolute: `${post.title} | ${BRAND.name}` },
     description: post.description,
     keywords: [post.keyword, BRAND.name, "attestation guide", "Azbaan global"],
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: buildHreflangAlternates(path),
+    },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -38,12 +49,13 @@ export function buildBlogPostMetadata(post: BlogPost): Metadata {
       type: "article",
       publishedTime: post.publishedAt,
       siteName: BRAND.name,
-      images: [{ url: HERO_IMAGE.src, alt: post.title }],
+      images: [{ url: ogImage, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
       description: post.description,
+      images: [ogImage],
     },
   };
 }
@@ -83,7 +95,7 @@ export function buildBlogPostStructuredData(
           "@type": "WebPage",
           "@id": pageUrl,
         },
-        image: HERO_IMAGE.src,
+        image: `${SITE_URL}/blog/${post.slug}/opengraph-image`,
         keywords: post.keyword,
         url: pageUrl,
         inLanguage: "en",

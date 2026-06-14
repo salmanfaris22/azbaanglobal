@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import type { RefObject } from "react";
 import { cn } from "@/shared/lib/cn";
 import { NAV_LINKS } from "@/shared/config/site";
+import { LanguageSwitcher } from "@/shared/ui/LanguageSwitcher";
 import { Brand } from "@/shared/ui/Brand";
 import { Button } from "@/shared/ui/Button";
 import { Container } from "@/shared/ui/Container";
@@ -59,8 +61,9 @@ export function SiteHeader({
         </nav>
 
         <div className="nav-actions">
+          {/* <LanguageSwitcher className="language-switcher--compact language-switcher--desktop" /> */}
           <ThemeToggle />
-          <Button href="#contact" variant="secondary">
+          <Button href="#contact" variant="secondary" className="nav-actions__cta">
             Call Us
           </Button>
           <button
@@ -89,9 +92,15 @@ export function SiteHeader({
               {link.label}
             </a>
           ))}
-          <button id="mobileThemeToggle" type="button" onClick={toggleTheme}>
-            {mobileLabel}
-          </button>
+          <div className="mobile-links__extras">
+            <LanguageSwitcher />
+            <Link href="#contact" className="button-secondary mobile-links__cta" onClick={onCloseMenu}>
+              Call Us
+            </Link>
+            <button id="mobileThemeToggle" type="button" onClick={toggleTheme}>
+              {mobileLabel}
+            </button>
+          </div>
         </Container>
       </div>
     </header>

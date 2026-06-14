@@ -1,12 +1,14 @@
 export type {
+  CountrySeoPage,
   LocationSeoPage,
   SeoFaqEntry,
   SeoPage,
   SeoPageBase,
   ServiceSeoPage,
 } from "./types";
-export { isLocationPage, isServicePage } from "./types";
+export { isCountryPage, isLocationPage, isServicePage } from "./types";
 
+export { COUNTRY_SEO_PAGES } from "./country-pages";
 export { LOCATION_SEO_PAGES } from "./location-pages";
 export { SERVICE_SEO_PAGES } from "./service-pages";
 

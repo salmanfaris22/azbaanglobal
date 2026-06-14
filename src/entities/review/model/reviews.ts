@@ -66,8 +66,6 @@ export const GOOGLE_REVIEWS: GoogleReview[] = [
   },
 ];
 
-export const GOOGLE_REVIEWS_SUMMARY = {
-  ratingValue: 4.9,
-  reviewCount: 127,
-  label: "Google reviews",
-} as const;
+import { getReviewSummary } from "@/shared/config/reviews";
+
+export const GOOGLE_REVIEWS_SUMMARY = getReviewSummary();

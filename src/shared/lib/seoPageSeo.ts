@@ -1,27 +1,39 @@
 import type { Metadata } from "next";
 import type { Location } from "@/entities/location/model/locations";
 import { LOCATIONS } from "@/entities/location/model/locations";
-import type { LocationSeoPage, SeoPage, ServiceSeoPage } from "@/shared/config/seo-pages";
-import { isLocationPage } from "@/shared/config/seo-pages";
+import type {
+  CountrySeoPage,
+  LocationSeoPage,
+  SeoPage,
+  ServiceSeoPage,
+} from "@/shared/config/seo-pages";
+import { isCountryPage, isLocationPage } from "@/shared/config/seo-pages";
+import type { Locale } from "@/shared/config/i18n";
+import { buildHreflangAlternates, localizedPath } from "@/shared/config/i18n";
 import { HERO_IMAGE } from "@/shared/config/images";
 import { BRAND } from "@/shared/config/seo-keywords";
 import { ORGANIZATION_SAME_AS } from "@/shared/config/social";
 import { SITE, SITE_URL } from "@/shared/config/site";
 import { buildBreadcrumbSchema, type BreadcrumbItem } from "@/shared/lib/breadcrumbs";
 
-function pagePath(slug: string) {
-  return `/${slug}`;
+function pagePath(slug: string, locale: Locale = "en") {
+  return localizedPath(`/${slug}`, locale);
 }
 
-export function buildSeoPageBreadcrumbs(page: SeoPage): BreadcrumbItem[] {
+export function getPageOgImageUrl(slug: string) {
+  return `${SITE_URL}/${slug}/opengraph-image`;
+}
+
+export function buildSeoPageBreadcrumbs(page: SeoPage, locale: Locale = "en"): BreadcrumbItem[] {
   return [
-    { label: "Home", href: "/" },
-    { label: page.h1, href: pagePath(page.slug) },
+    { label: "Home", href: localizedPath("/", locale) },
+    { label: page.h1, href: pagePath(page.slug, locale) },
   ];
 }
 
-export function buildSeoPageMetadata(page: SeoPage): Metadata {
-  const path = pagePath(page.slug);
+export function buildSeoPageMetadata(page: SeoPage, locale: Locale = "en"): Metadata {
+  const path = pagePath(page.slug, locale);
+  const hreflang = buildHreflangAlternates(`/${page.slug}`);
 
   return {
     title: { absolute: page.title },
@@ -34,20 +46,24 @@ export function buildSeoPageMetadata(page: SeoPage): Metadata {
       "certificate attestation",
       "azbaanglobal.com",
     ],
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: hreflang,
+    },
     openGraph: {
       title: page.title,
       description: page.description,
       url: `${SITE_URL}${path}`,
       type: "website",
-      locale: isLocationPage(page) ? "en_IN" : "en_AE",
+      locale: locale === "hi" ? "hi_IN" : locale === "ar" ? "ar_AE" : isLocationPage(page) ? "en_IN" : "en_AE",
       siteName: BRAND.name,
-      images: [{ url: HERO_IMAGE.src, alt: page.title }],
+      images: [{ url: getPageOgImageUrl(page.slug), width: 1200, height: 630, alt: page.title }],
     },
     twitter: {
       card: "summary_large_image",
       title: page.title,
       description: page.description,
+      images: [getPageOgImageUrl(page.slug)],
     },
   };
 }
@@ -67,10 +83,10 @@ function buildFaqNode(page: SeoPage, pageUrl: string) {
 export function buildLocationPageStructuredData(
   page: LocationSeoPage,
   location: Location,
-  breadcrumbs?: BreadcrumbItem[],
+  locale: Locale = "en",
 ) {
-  const pageUrl = `${SITE_URL}/${page.slug}`;
-  const crumbItems = breadcrumbs ?? buildSeoPageBreadcrumbs(page);
+  const pageUrl = `${SITE_URL}${pagePath(page.slug, locale)}`;
+  const crumbItems = buildSeoPageBreadcrumbs(page, locale);
 
   return {
     "@context": "https://schema.org",
@@ -82,7 +98,7 @@ export function buildLocationPageStructuredData(
         url: pageUrl,
         name: page.title,
         description: page.description,
-        inLanguage: "en",
+        inLanguage: locale === "hi" ? "hi" : locale === "ar" ? "ar" : "en",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${pageUrl}/#localbusiness` },
       },
@@ -127,12 +143,9 @@ export function buildLocationPageStructuredData(
   };
 }
 
-export function buildServicePageStructuredData(
-  page: ServiceSeoPage,
-  breadcrumbs?: BreadcrumbItem[],
-) {
-  const pageUrl = `${SITE_URL}/${page.slug}`;
-  const crumbItems = breadcrumbs ?? buildSeoPageBreadcrumbs(page);
+export function buildServicePageStructuredData(page: ServiceSeoPage, locale: Locale = "en") {
+  const pageUrl = `${SITE_URL}${pagePath(page.slug, locale)}`;
+  const crumbItems = buildSeoPageBreadcrumbs(page, locale);
   const servedLocations = page.relatedLocations
     .map((key) => LOCATIONS.find((entry) => entry.key === key))
     .filter(Boolean);
@@ -147,7 +160,7 @@ export function buildServicePageStructuredData(
         url: pageUrl,
         name: page.title,
         description: page.description,
-        inLanguage: "en",
+        inLanguage: locale === "hi" ? "hi" : locale === "ar" ? "ar" : "en",
         isPartOf: { "@id": `${SITE_URL}/#website` },
         about: { "@id": `${pageUrl}/#service` },
       },
@@ -172,15 +185,59 @@ export function buildServicePageStructuredData(
   };
 }
 
-export function buildSeoPageStructuredData(page: SeoPage, location?: Location) {
+export function buildCountryPageStructuredData(page: CountrySeoPage, locale: Locale = "en") {
+  const pageUrl = `${SITE_URL}${pagePath(page.slug, locale)}`;
+  const crumbItems = buildSeoPageBreadcrumbs(page, locale);
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      buildBreadcrumbSchema(crumbItems),
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}/#webpage`,
+        url: pageUrl,
+        name: page.title,
+        description: page.description,
+        inLanguage: locale === "hi" ? "hi" : locale === "ar" ? "ar" : "en",
+        isPartOf: { "@id": `${SITE_URL}/#website` },
+        about: { "@id": `${pageUrl}/#service` },
+      },
+      {
+        "@type": "Service",
+        "@id": `${pageUrl}/#service`,
+        name: page.keyword,
+        alternateName: [page.countryName, page.h1],
+        description: page.description,
+        url: pageUrl,
+        image: HERO_IMAGE.src,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        areaServed: { "@type": "Country", name: page.countryName },
+        serviceType: `${page.countryName} attestation`,
+        knowsAbout: [page.keyword, ...page.services],
+      },
+      buildFaqNode(page, pageUrl),
+    ],
+  };
+}
+
+export function buildSeoPageStructuredData(
+  page: SeoPage,
+  location?: Location,
+  locale: Locale = "en",
+) {
   if (isLocationPage(page)) {
     if (!location) {
       throw new Error(`Location required for page ${page.slug}`);
     }
-    return buildLocationPageStructuredData(page, location, buildSeoPageBreadcrumbs(page));
+    return buildLocationPageStructuredData(page, location, locale);
   }
 
-  return buildServicePageStructuredData(page, buildSeoPageBreadcrumbs(page));
+  if (isCountryPage(page)) {
+    return buildCountryPageStructuredData(page, locale);
+  }
+
+  return buildServicePageStructuredData(page, locale);
 }
 
 /** @deprecated Use buildSeoPageMetadata instead. */
