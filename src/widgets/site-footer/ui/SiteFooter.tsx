@@ -1,25 +1,24 @@
 import { FOOTER_SOCIAL_LINKS } from "@/shared/config/social";
+import { getPagesByKind } from "@/shared/config/seo-pages";
 import { NAV_LINKS, SITE, TEL_UAE_URL } from "@/shared/config/site";
 import { LOCATIONS } from "@/entities/location";
 import { Brand } from "@/shared/ui/Brand";
 import { Container } from "@/shared/ui/Container";
 
 const FOOTER_OFFICES = LOCATIONS.filter((location) =>
-  ["dubai", "delhi", "kochi"].includes(location.key),
+  ["dubai", "delhi", "kochi", "kozhikode", "mumbai"].includes(location.key),
 );
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const locationPages = getPagesByKind("location");
+  const servicePages = getPagesByKind("service");
 
   return (
     <footer className="footer">
-      <Container className="footer-shell">
+      <Container className="footer-shell footer-shell--expanded">
         <div className="footer-brand-block">
-          <Brand
-            href="#top"
-            showTagline
-            ariaLabel="Azbaan global footer brand"
-          />
+          <Brand href="/" showTagline ariaLabel="Azbaan global footer brand" />
 
           <p className="footer-copy">
             © {year} Azbaan global. International attestation services, embassy support, and
@@ -51,9 +50,28 @@ export function SiteFooter() {
                 {link.label}
               </a>
             ))}
-            <a href="/attestation-services-delhi">Delhi attestation</a>
-            <a href="/attestation-services-dubai">Dubai attestation</a>
-            <a href="/attestation-services-kochi">Kochi attestation</a>
+          </div>
+
+          <div className="footer-seo-links">
+            <h2 className="footer-contact__title">City pages</h2>
+            <div className="footer-links">
+              {locationPages.map((page) => (
+                <a key={page.slug} href={`/${page.slug}`}>
+                  {page.h1}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-seo-links">
+            <h2 className="footer-contact__title">Service pages</h2>
+            <div className="footer-links">
+              {servicePages.map((page) => (
+                <a key={page.slug} href={`/${page.slug}`}>
+                  {page.h1}
+                </a>
+              ))}
+            </div>
           </div>
 
           {FOOTER_SOCIAL_LINKS.length > 0 ? (

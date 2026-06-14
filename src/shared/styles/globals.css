@@ -1834,6 +1834,86 @@
       line-height: 1.6;
     }
 
+    .google-reviews-summary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+      color: var(--color-text-soft);
+      font-size: 0.95rem;
+    }
+
+    .google-reviews-summary strong {
+      font-size: 1.4rem;
+      color: var(--color-text);
+    }
+
+    .google-reviews-grid {
+      margin-top: 8px;
+    }
+
+    .google-review-card {
+      display: grid;
+      gap: 16px;
+    }
+
+    .google-review-card__head {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .google-review-badge {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      box-shadow: 0 8px 18px rgba(66, 133, 244, 0.22);
+    }
+
+    .google-review-card__meta {
+      display: block;
+      margin-top: 6px;
+      color: var(--color-text-muted);
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .google-reviews-cta {
+      margin: 28px 0 0;
+      color: var(--color-text-soft);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .star-rating {
+      display: inline-flex;
+      gap: 2px;
+    }
+
+    .star-rating__star {
+      width: 16px;
+      height: 16px;
+      fill: rgba(148, 163, 184, 0.35);
+    }
+
+    .star-rating__star.is-filled {
+      fill: #fbbc04;
+    }
+
+    .star-rating--summary .star-rating__star {
+      width: 20px;
+      height: 20px;
+    }
+
     .contact-card {
       display: grid;
       gap: 16px;
@@ -2385,6 +2465,69 @@
       text-transform: uppercase;
     }
 
+    .footer-shell--expanded {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr);
+    }
+
+    .footer-seo-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .seo-hub {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .seo-hub__group h2 {
+      margin: 0 0 16px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-soft);
+    }
+
+    .seo-hub__links {
+      display: grid;
+      gap: 12px;
+    }
+
+    .seo-hub__link {
+      display: grid;
+      gap: 4px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid var(--color-line);
+      background: rgba(255, 255, 255, 0.58);
+      transition:
+        transform 0.24s var(--ease-out),
+        border-color 0.24s ease,
+        box-shadow 0.24s ease;
+    }
+
+    html[data-theme="dark"] .seo-hub__link {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .seo-hub__link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(246, 99, 85, 0.28);
+      box-shadow: 0 14px 30px rgba(201, 39, 39, 0.08);
+    }
+
+    .seo-hub__link strong {
+      font-size: 0.96rem;
+      color: var(--color-text);
+    }
+
+    .seo-hub__link span {
+      color: var(--color-text-muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
     .footer-copy {
       color: var(--color-text-muted);
       font-size: 0.9rem;
@@ -2616,7 +2759,8 @@
     }
 
     @media (max-width: 860px) {
-      .footer-shell {
+      .footer-shell,
+      .footer-shell--expanded {
         grid-template-columns: 1fr;
       }
 
@@ -2626,6 +2770,10 @@
 
       .footer-social {
         justify-content: flex-start;
+      }
+
+      .seo-hub {
+        grid-template-columns: 1fr;
       }
 
       .desktop-nav,
@@ -3010,6 +3158,38 @@
 
     html[data-theme="dark"] .location-related__links a {
       background: rgba(255, 255, 255, 0.04);
+    }
+
+    .service-office-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .service-office-card {
+      display: grid;
+      gap: 6px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--color-line);
+      background: rgba(255, 255, 255, 0.58);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    html[data-theme="dark"] .service-office-card {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .service-office-card strong {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .service-office-card a {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--color-accent-strong);
     }
 
     .location-footer {

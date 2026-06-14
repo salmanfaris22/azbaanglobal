@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { LOCATION_PAGE_SLUGS } from "@/shared/config/location-pages";
+import { ALL_SEO_PAGES } from "@/shared/config/seo-pages";
 import { SITE_URL } from "@/shared/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -12,23 +12,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    ...LOCATION_PAGE_SLUGS.map((slug) => ({
-      url: `${SITE_URL}/${slug}`,
+    ...ALL_SEO_PAGES.map((page) => ({
+      url: `${SITE_URL}/${page.slug}`,
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: 0.92,
+      priority: page.sitemapPriority,
     })),
-    {
-      url: `${SITE_URL}/#services`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${SITE_URL}/#contact`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
   ];
 }

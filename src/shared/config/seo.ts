@@ -9,7 +9,7 @@ import {
   FAQ_ENTRIES,
   SEO_KEYWORDS,
 } from "./seo-keywords";
-import { LOCATION_PAGES } from "./location-pages";
+import { ALL_SEO_PAGES } from "./seo-pages";
 import { ORGANIZATION_SAME_AS } from "./social";
 import { SITE, SITE_URL } from "./site";
 
@@ -18,7 +18,9 @@ const ogImageFallback = HERO_IMAGE.src;
 
 function buildLocalBusinessNodes() {
   return LOCATIONS.map((location) => {
-    const cityPage = LOCATION_PAGES.find((page) => page.locationKey === location.key);
+    const cityPage = ALL_SEO_PAGES.find(
+      (page) => page.kind === "location" && page.locationKey === location.key,
+    );
     const pageUrl = cityPage ? `${SITE_URL}/${cityPage.slug}` : `${SITE_URL}/#locations`;
 
     return {

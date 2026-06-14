@@ -16,7 +16,9 @@ import { ThemeProvider } from "@/features/theme";
 import { SiteHeader } from "@/widgets/site-header";
 import { SiteFooter } from "@/widgets/site-footer";
 import { HeroSection } from "@/widgets/hero-section";
+import { SeoPagesHub } from "@/widgets/seo-pages-hub";
 import { SeoContentSection } from "@/widgets/seo-content-section";
+import { GoogleReviewsSection } from "@/widgets/google-reviews-section";
 import { ServicesSection } from "@/widgets/services-section";
 import { AboutSection } from "@/widgets/about-section";
 import { ConsulatesSection } from "@/widgets/consulates-section";
@@ -76,6 +78,7 @@ const TRACKED_SECTIONS = [
   "countries",
   "consulates",
   "process",
+  "reviews",
   "blog",
   "locations",
   "faq",
@@ -120,8 +123,10 @@ export function HomePageClient() {
         <CountriesSection />
         <ConsulatesSection />
         <ProcessSection />
+        <GoogleReviewsSection />
         <BlogSection />
         <LocationPicker />
+        <SeoPagesHub />
         <SeoContentSection />
         <FaqSection />
         <ContactSection />

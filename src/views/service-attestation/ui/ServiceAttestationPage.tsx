@@ -1,26 +1,27 @@
 import Link from "next/link";
-import type { Location } from "@/entities/location/model/locations";
-import type { LocationSeoPage } from "@/shared/config/seo-pages";
+import { LOCATIONS } from "@/entities/location/model/locations";
+import type { ServiceSeoPage } from "@/shared/config/seo-pages";
 import { getPagesByKind, getRelatedPages } from "@/shared/config/seo-pages";
 import { WHATSAPP_URL, SITE } from "@/shared/config/site";
 import { Container } from "@/shared/ui/Container";
 import { Button } from "@/shared/ui/Button";
 
-type LocationAttestationPageProps = {
-  page: LocationSeoPage;
-  location: Location;
+type ServiceAttestationPageProps = {
+  page: ServiceSeoPage;
 };
 
-export function LocationAttestationPage({ page, location }: LocationAttestationPageProps) {
+export function ServiceAttestationPage({ page }: ServiceAttestationPageProps) {
   const relatedPages = getRelatedPages(page);
-  const servicePages = getPagesByKind("service").slice(0, 4);
+  const locationPages = getPagesByKind("location").filter((entry) =>
+    page.relatedLocations.includes(entry.locationKey),
+  );
 
   return (
-    <article className="location-page">
+    <article className="location-page service-page">
       <section className="location-hero section">
         <Container>
           <p className="location-hero__eyebrow">
-            <Link href="/">Azbaan global</Link> · {location.label}
+            <Link href="/">Azbaan global</Link> · {page.serviceType}
           </p>
           <h1 className="location-hero__title">{page.h1}</h1>
           <p className="location-hero__copy">{page.intro}</p>
@@ -29,7 +30,7 @@ export function LocationAttestationPage({ page, location }: LocationAttestationP
               WhatsApp {SITE.phoneIndiaAlt}
             </a>
             <Button href="/#contact" variant="secondary">
-              Contact office
+              Get a quote
             </Button>
           </div>
         </Container>
@@ -38,7 +39,7 @@ export function LocationAttestationPage({ page, location }: LocationAttestationP
       <section className="section section-alt">
         <Container className="location-grid">
           <div className="location-copy">
-            <h2>{page.keyword} by Azbaan</h2>
+            <h2>{page.keyword} — Azbaan global</h2>
             {page.body.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -50,39 +51,30 @@ export function LocationAttestationPage({ page, location }: LocationAttestationP
           </div>
 
           <aside className="location-office">
-            <h2>Office &amp; map</h2>
-            <p className="location-office__address">
-              <strong>{location.title}</strong>
-              <span>{location.address}</span>
-            </p>
-            <p className="location-office__phones">
-              <span>{location.phone1.trim()}</span>
-              {location.phone2 ? <span>{location.phone2.trim()}</span> : null}
-            </p>
-            <div className="location-map">
-              <iframe
-                title={`${location.seoTitle} map`}
-                src={location.map}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
+            <h2>Offices for this service</h2>
+            <div className="service-office-list">
+              {locationPages.map((entry) => {
+                const location = LOCATIONS.find((item) => item.key === entry.locationKey)!;
+                return (
+                  <div key={entry.slug} className="service-office-card">
+                    <strong>{location.label}</strong>
+                    <span>{location.address}</span>
+                    <Link href={`/${entry.slug}`}>View {location.label} page</Link>
+                  </div>
+                );
+              })}
             </div>
-            <a
-              className="direction-btn"
-              href={location.directions}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Get directions
-            </a>
+            <p className="location-office__phones">
+              <span>{SITE.phoneIndia}</span>
+              <span>{SITE.phoneUae}</span>
+            </p>
           </aside>
         </Container>
       </section>
 
       <section className="section">
         <Container>
-          <h2 className="location-faq__title">FAQ — {location.label}</h2>
+          <h2 className="location-faq__title">FAQ — {page.serviceType}</h2>
           <div className="location-faq">
             {page.faq.map((item) => (
               <details key={item.question} className="location-faq__item">
@@ -96,14 +88,9 @@ export function LocationAttestationPage({ page, location }: LocationAttestationP
 
       <section className="section section-alt location-related">
         <Container>
-          <h2>Related attestation pages</h2>
+          <h2>Related attestation services</h2>
           <div className="location-related__links">
             {relatedPages.map((entry) => (
-              <Link key={entry.slug} href={`/${entry.slug}`}>
-                {entry.h1}
-              </Link>
-            ))}
-            {servicePages.map((entry) => (
               <Link key={entry.slug} href={`/${entry.slug}`}>
                 {entry.h1}
               </Link>

@@ -2,15 +2,29 @@
 
 > Professional attestation, apostille, MOFA, embassy, and consulate legalization services in the UAE, India, and 40+ countries.
 
-Azbaan global (also known as Azbaan) helps individuals and businesses authenticate personal, educational, and commercial documents for international use. Offices in Dubai, Delhi, and Kochi support certificate attestation workflows for UAE MOFA, Indian HRD/MEA, and destination-country embassy requirements.
+Azbaan global (also known as Azbaan) helps individuals and businesses authenticate personal, educational, and commercial documents for international use. Offices in Dubai, Delhi, Kochi, Kozhikode, and Mumbai support certificate attestation workflows for UAE MOFA, Indian HRD/MEA, and destination-country embassy requirements.
 
 ## Primary pages
 
 - Home: https://azbaanglobal.com/
-- Attestation services Delhi: https://azbaanglobal.com/attestation-services-delhi
-- Attestation services Dubai: https://azbaanglobal.com/attestation-services-dubai
-- Attestation services Kochi: https://azbaanglobal.com/attestation-services-kochi
 - Sitemap: https://azbaanglobal.com/sitemap.xml
+
+## City attestation pages
+
+- Delhi: https://azbaanglobal.com/attestation-services-delhi
+- Dubai: https://azbaanglobal.com/attestation-services-dubai
+- Kochi: https://azbaanglobal.com/attestation-services-kochi
+- Mumbai: https://azbaanglobal.com/attestation-services-mumbai
+- Kozhikode: https://azbaanglobal.com/attestation-services-kozhikode
+
+## Service attestation pages
+
+- MOFA attestation UAE: https://azbaanglobal.com/mofa-attestation-uae
+- Degree attestation UAE: https://azbaanglobal.com/degree-attestation-uae
+- Birth certificate attestation UAE: https://azbaanglobal.com/birth-certificate-attestation-uae
+- Indian attestation services: https://azbaanglobal.com/indian-attestation-services
+- Commercial document attestation: https://azbaanglobal.com/commercial-document-attestation
+- Apostille services India: https://azbaanglobal.com/apostille-services-india
 
 ## Core services
 
@@ -33,6 +47,9 @@ Office No-122, Antriksh Bhawan, 22 K.G Marg, Connaught Place, New Delhi 110001
 ### Kochi, India
 X77Q+F2W, Pallimukku, Kochi, Ernakulam, Kerala 682016
 
+### Kozhikode, India
+Room No. 63/3617, Ground, CD Tower, New Bus Stand, EMS Stadium, Arayidathupalam, Kozhikode, Kerala 673004
+
 ## Contact
 
 - Website: https://azbaanglobal.com
@@ -46,4 +63,4 @@ Azbaan, Azbaan global, azbaanglobal, azbaanglobal.com
 
 ## Optional
 
-Full structured data (Organization, LocalBusiness, FAQPage) is available in JSON-LD on the homepage.
+Full structured data (Organization, LocalBusiness, Service, FAQPage) is available in JSON-LD across landing pages.
