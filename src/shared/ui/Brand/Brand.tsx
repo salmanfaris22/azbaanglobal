@@ -20,7 +20,7 @@ export function Brand({
       {/* Small local logo — plain img avoids next/image LCP competition with hero */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={SITE.logoSrc}
+        src={SITE.logoMarkSrc}
         alt={`${SITE.name} logo`}
         width={48}
         height={48}

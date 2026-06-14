@@ -7,6 +7,7 @@ export const SITE = {
   domain: "azbaanglobal.com",
   tagline: "Best Attestation Services in UAE & India",
   logoSrc: "/logo.jpeg",
+  logoMarkSrc: "/logo-96.jpeg",
   email: "delhi@azbaanglobal.com",
   phoneUae: "+971 4 338 8893",
   phoneIndia: "+91 79027 77751",

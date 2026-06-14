@@ -7,7 +7,6 @@ import "@/shared/styles/globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
   variable: "--font-plus-jakarta",
   display: "swap",
   preload: true,
@@ -16,7 +15,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["600"],
   variable: "--font-cormorant",
   display: "swap",
   preload: false,
