@@ -8,14 +8,15 @@ export function CountriesSection() {
     <Section id="countries" variant="alt" trackSection className="section-countries">
       <Container>
         <SectionHead
-          label="Global"
-          title="Countries We Serve"
-          copy="Worldwide global support for personal, educational, and business documents."
+          label="Countries We Serve"
+          title="Attestation services for 40+ countries worldwide"
+          copy="Azbaan global (azbaanglobal.com) delivers top attestation services for personal, educational, and commercial documents across major international destinations."
         />
 
         <Reveal className="countries-panel">
           <p className="countries-intro">
-            Fast and reliable document global across major global destinations.
+            From UAE and Indian attestation routes to embassy and consulate legalization — Azbaan
+            supports certificate attestation for every country listed below.
           </p>
           <div className="country-grid">
             {COUNTRIES.map((country) => (

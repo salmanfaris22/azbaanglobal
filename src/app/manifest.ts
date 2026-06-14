@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from "@/shared/config/seo-keywords";
 import { SITE } from "@/shared/config/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: SITE.name,
-    short_name: SITE.name,
-    description:
-      "Certificate attestation, apostille, MOFA, embassy, and consulate services in Dubai, UAE.",
+    name: DEFAULT_TITLE,
+    short_name: SITE.shortName,
+    description: DEFAULT_DESCRIPTION,
     start_url: "/",
     display: "standalone",
     background_color: "#fffaf8",

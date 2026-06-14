@@ -1,15 +1,85 @@
 import type { Metadata } from "next";
+import { COUNTRIES } from "@/entities/country/model/countries";
+import { LOCATIONS } from "@/entities/location/model/locations";
 import { HERO_IMAGE } from "./images";
+import {
+  BRAND,
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  FAQ_ENTRIES,
+  SEO_KEYWORDS,
+} from "./seo-keywords";
 import { SITE, SITE_URL } from "./site";
 
-const defaultTitle =
-  "Azbaan global | Attestation & Apostille Services in Dubai, UAE";
-const defaultDescription =
-  "Azbaan global provides certificate attestation, apostille, MOFA, embassy, and consulate legalization in Dubai, UAE. Personal, educational, and commercial documents for 40+ countries.";
-
 const ogImageAlt = HERO_IMAGE.alt;
-
 const ogImageFallback = HERO_IMAGE.src;
+
+function buildLocalBusinessNodes() {
+  return LOCATIONS.map((location) => ({
+    "@type": "LocalBusiness" as const,
+    "@id": `${SITE_URL}/#location-${location.key}`,
+    name: location.seoTitle,
+    alternateName: [BRAND.shortName, BRAND.name],
+    description: `${BRAND.name} provides ${location.seoKeywords[0]} at ${location.title}. Contact Azbaan for certificate attestation, apostille, MOFA, and embassy support.`,
+    url: `${SITE_URL}/#locations`,
+    image: ogImageFallback,
+    email: SITE.email,
+    telephone: [location.phone1.trim(), location.phone2.trim()].filter(Boolean),
+    priceRange: "$$",
+    geo: {
+      "@type": "GeoCoordinates" as const,
+      latitude: location.lat,
+      longitude: location.lng,
+    },
+    hasMap: location.directions,
+    address: {
+      "@type": "PostalAddress" as const,
+      streetAddress: location.streetAddress,
+      addressLocality: location.locality,
+      addressRegion: location.region,
+      postalCode: location.postalCode || undefined,
+      addressCountry: location.countryCode,
+    },
+    areaServed: {
+      "@type": "City" as const,
+      name: location.locality,
+    },
+    knowsAbout: location.seoKeywords,
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  }));
+}
+
+function buildCountryListNode() {
+  return {
+    "@type": "ItemList" as const,
+    "@id": `${SITE_URL}/#countries-served`,
+    name: "Countries We Serve — Azbaan global Attestation Services",
+    description:
+      "Azbaan global attestation and legalization support across major international destinations.",
+    numberOfItems: COUNTRIES.length,
+    itemListElement: COUNTRIES.map((country, index) => ({
+      "@type": "ListItem" as const,
+      position: index + 1,
+      name: country.seoLabel,
+      description: `${BRAND.name} ${country.seoLabel} for personal, educational, and commercial documents.`,
+    })),
+  };
+}
+
+function buildFaqNode() {
+  return {
+    "@type": "FAQPage" as const,
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: FAQ_ENTRIES.map((entry) => ({
+      "@type": "Question" as const,
+      name: entry.question,
+      acceptedAnswer: {
+        "@type": "Answer" as const,
+        text: entry.answer,
+      },
+    })),
+  };
+}
 
 export const structuredData = {
   "@context": "https://schema.org",
@@ -18,94 +88,132 @@ export const structuredData = {
       "@type": "WebSite",
       "@id": `${SITE_URL}/#website`,
       url: SITE_URL,
-      name: SITE.name,
-      description: defaultDescription,
+      name: BRAND.name,
+      alternateName: [...BRAND.alternateNames],
+      description: DEFAULT_DESCRIPTION,
       inLanguage: "en",
       publisher: { "@id": `${SITE_URL}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${SITE_URL}/?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
     },
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: SITE.name,
+      name: BRAND.name,
+      alternateName: [...BRAND.alternateNames],
       url: SITE_URL,
       email: SITE.email,
-      telephone: SITE.phoneUae,
+      telephone: [SITE.phoneUae, SITE.phoneIndiaAlt],
       logo: `${SITE_URL}${SITE.logoSrc}`,
+      sameAs: [SITE_URL],
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Al Tawhidi Building 1, Office #502, Burdubai",
-        addressLocality: "Dubai",
-        addressCountry: "AE",
+        streetAddress: LOCATIONS[0].streetAddress,
+        addressLocality: LOCATIONS[0].locality,
+        addressRegion: LOCATIONS[0].region,
+        addressCountry: LOCATIONS[0].countryCode,
       },
-      sameAs: [],
     },
     {
       "@type": "ProfessionalService",
       "@id": `${SITE_URL}/#service`,
-      name: SITE.name,
+      name: `${BRAND.name} — Attestation Services`,
+      alternateName: [
+        "Azbaan Attestation Services",
+        "best attestation services",
+        "top attestation services",
+        "Indian attestation services",
+      ],
       url: SITE_URL,
       image: ogImageFallback,
-      description: defaultDescription,
+      description: DEFAULT_DESCRIPTION,
       email: SITE.email,
       telephone: [SITE.phoneUae, SITE.phoneIndiaAlt],
-      areaServed: ["AE", "IN", "QA"],
+      areaServed: COUNTRIES.map((country) => country.name),
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Al Tawhidi Building 1, Office #502, Burdubai",
-        addressLocality: "Dubai",
-        addressCountry: "AE",
+        streetAddress: LOCATIONS[0].streetAddress,
+        addressLocality: LOCATIONS[0].locality,
+        addressRegion: LOCATIONS[0].region,
+        addressCountry: LOCATIONS[0].countryCode,
       },
       serviceType: [
+        "Attestation Services",
         "Personal Certificate Attestation",
         "Educational Certificate Attestation",
         "Commercial Document Attestation",
         "MOFA Attestation",
         "Embassy and Consulate Legalization",
         "Apostille Services",
+        "Indian Attestation Services",
       ],
-      knowsAbout: [
-        "Document attestation UAE",
-        "MOFA attestation Dubai",
-        "Embassy legalization",
-        "Certificate apostille",
-      ],
+      knowsAbout: [...SEO_KEYWORDS],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Azbaan global Attestation Services",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Attestation Services Dubai",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Indian Attestation Services Delhi",
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: "Certificate Attestation UAE",
+            },
+          },
+        ],
+      },
     },
+    buildCountryListNode(),
+    buildFaqNode(),
+    ...buildLocalBusinessNodes(),
     {
       "@type": "WebPage",
       "@id": `${SITE_URL}/#webpage`,
       url: SITE_URL,
-      name: defaultTitle,
-      description: defaultDescription,
+      name: DEFAULT_TITLE,
+      description: DEFAULT_DESCRIPTION,
       isPartOf: { "@id": `${SITE_URL}/#website` },
-      about: { "@id": `${SITE_URL}/#service` },
+      about: [{ "@id": `${SITE_URL}/#service` }, { "@id": `${SITE_URL}/#countries-served` }],
       inLanguage: "en",
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: ogImageFallback,
+        caption: ogImageAlt,
+      },
     },
   ],
 };
 
 export const siteMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: BRAND.name,
   title: {
-    default: defaultTitle,
-    template: `%s | ${SITE.name}`,
+    default: DEFAULT_TITLE,
+    template: `%s | ${BRAND.name}`,
   },
-  description: defaultDescription,
-  keywords: [
-    "attestation services Dubai",
-    "apostille UAE",
-    "MOFA attestation Dubai",
-    "embassy attestation UAE",
-    "certificate attestation Dubai",
-    "document legalization UAE",
-    "Azbaan global",
-    "educational certificate attestation",
-    "commercial document attestation",
-  ],
-  authors: [{ name: SITE.name, url: SITE_URL }],
-  creator: SITE.name,
-  publisher: SITE.name,
-  category: "Legal Services",
+  description: DEFAULT_DESCRIPTION,
+  keywords: [...SEO_KEYWORDS],
+  authors: [{ name: BRAND.name, url: SITE_URL }],
+  creator: BRAND.name,
+  publisher: BRAND.name,
+  category: "Attestation Services",
   robots: {
     index: true,
     follow: true,
@@ -129,9 +237,9 @@ export const siteMetadata: Metadata = {
     type: "website",
     locale: "en_AE",
     url: SITE_URL,
-    siteName: SITE.name,
-    title: defaultTitle,
-    description: defaultDescription,
+    siteName: BRAND.name,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [
       {
         url: ogImageFallback,
@@ -143,8 +251,8 @@ export const siteMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: defaultTitle,
-    description: defaultDescription,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
     images: [ogImageFallback],
   },
   icons: {
@@ -153,7 +261,13 @@ export const siteMetadata: Metadata = {
   },
   other: {
     "theme-color": "#fffaf8",
+    "geo.region": "AE-DU",
+    "geo.placename": "Dubai",
+    "geo.position": `${LOCATIONS[0].lat};${LOCATIONS[0].lng}`,
+    ICBM: `${LOCATIONS[0].lat}, ${LOCATIONS[0].lng}`,
   },
 };
 
 export const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t||"light"}catch(e){}})();`;
+
+export { BRAND, DEFAULT_DESCRIPTION, DEFAULT_TITLE, FAQ_ENTRIES, SEO_KEYWORDS };

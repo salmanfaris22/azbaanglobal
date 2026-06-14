@@ -13,8 +13,8 @@ export function LocationPicker() {
       <Container>
         <SectionHead
           label="Locations"
-          title="Our Offices"
-          copy="Select a location to view contact details and map."
+          title="Azbaan global attestation offices — Dubai, Delhi, Kochi & more"
+          copy="Select a location for map coordinates, nearest office directions, and local attestation service contact details."
         />
 
         <div className="location-wrapper">
@@ -36,13 +36,19 @@ export function LocationPicker() {
             <div className="location-map">
               <iframe
                 id="mapFrame"
-                title={`Map of ${active.label} office`}
+                title={`${active.seoTitle} — map at ${active.lat}, ${active.lng}`}
                 src={active.map}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
               />
             </div>
 
-            <div className="location-info" id="locationInfo">
-              <h3>{active.title}</h3>
+            <div className="location-info" id="locationInfo" itemScope itemType="https://schema.org/LocalBusiness">
+              <meta itemProp="name" content={active.seoTitle} />
+              <meta itemProp="latitude" content={String(active.lat)} />
+              <meta itemProp="longitude" content={String(active.lng)} />
+              <h3 itemProp="address">{active.title}</h3>
               <p>{active.address}</p>
               <div className="contact-row">
                 <span>📞 {active.phone1}</span>

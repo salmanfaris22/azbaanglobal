@@ -44,6 +44,14 @@ const BlogSection = dynamic(
   { loading: () => <SectionPlaceholder /> },
 );
 
+const FaqSection = dynamic(
+  () =>
+    import("@/widgets/faq-section").then((mod) => ({
+      default: mod.FaqSection,
+    })),
+  { loading: () => <SectionPlaceholder /> },
+);
+
 const LocationPicker = dynamic(
   () =>
     import("@/features/location-picker").then((mod) => ({
@@ -68,6 +76,8 @@ const TRACKED_SECTIONS = [
   "consulates",
   "process",
   "blog",
+  "locations",
+  "faq",
   "contact",
 ];
 
@@ -111,6 +121,7 @@ export function HomePageClient() {
         <ProcessSection />
         <BlogSection />
         <LocationPicker />
+        <FaqSection />
         <ContactSection />
       </main>
 

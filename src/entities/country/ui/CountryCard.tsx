@@ -10,7 +10,7 @@ export function CountryCard({ country }: CountryCardProps) {
     <article className="country-card">
       <Image
         src={`https://flagcdn.com/w40/${country.code}.png`}
-        alt={`${country.name} flag`}
+        alt={`${country.name} flag for ${country.seoLabel}`}
         width={40}
         height={30}
         loading="lazy"

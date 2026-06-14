@@ -1,4 +1,5 @@
 import { SITE, WHATSAPP_URL, MAILTO_URL } from "@/shared/config/site";
+import { WhatsAppIcon } from "@/shared/ui/icons/WhatsAppIcon";
 import { Container } from "@/shared/ui/Container";
 import { Reveal } from "@/shared/ui/Reveal";
 import { Section, SectionHead } from "@/shared/ui/Section";
@@ -22,12 +23,18 @@ export function ContactSection() {
               commercial, MOFA, apostille, and related certificates.
             </p>
 
-            <div className="contact-chip contact-chip--whatsapp">
+            <a
+              className="contact-chip contact-chip--whatsapp contact-chip--whatsapp-glow"
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span className="contact-chip__icon" aria-hidden="true">
+                <WhatsAppIcon />
+              </span>
               <strong>WhatsApp</strong>
-              <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                {SITE.phoneIndiaAlt}
-              </a>
-            </div>
+              <span>{SITE.phoneIndiaAlt}</span>
+            </a>
 
             <div className="contact-chip">
               <strong>Email</strong>

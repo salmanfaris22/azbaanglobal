@@ -3,7 +3,9 @@ export const SITE_URL =
 
 export const SITE = {
   name: "Azbaan global",
-  tagline: "International global Services in UAE",
+  shortName: "Azbaan",
+  domain: "azbaanglobal.com",
+  tagline: "Best Attestation Services in UAE & India",
   logoSrc: "/logo.jpeg",
   email: "delhi@azbaanglobal.com",
   phoneUae: "+971 4 338 8893",

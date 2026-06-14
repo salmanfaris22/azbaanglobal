@@ -66,20 +66,21 @@ export function HeroSection() {
           <div>
             <LoadIn delay="0.06s" className="eyebrow">
               <span className="eyebrow-dot" />
-              No.1 Global Appolistle & Attestation Services
+              No.1 Attestation & Apostille Services — Azbaan global
             </LoadIn>
 
             <LoadIn delay="0.16s">
               <h1 className="hero-title">
-                Worldwide global
-                <span>Fast • Legal • Reliable</span>
+                Best Attestation Services
+                <span>Fast • Legal • Reliable — UAE & India</span>
               </h1>
             </LoadIn>
 
             <LoadIn delay="0.28s">
               <p className="hero-text">
-                Professional document global for UAE and international use. We handle
-                verification, MOFA, embassy, and legalization processes.
+                Azbaan (Azbaan global) at azbaanglobal.com — top attestation services for
+                certificate attestation, MOFA, embassy, and consulate legalization in Dubai,
+                Delhi, Kochi, and 40+ countries.
               </p>
             </LoadIn>
 

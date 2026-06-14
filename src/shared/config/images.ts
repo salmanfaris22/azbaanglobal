@@ -8,11 +8,11 @@ export const CERTIFICATE_IMAGES = {
     alt: "Verification review against destination authority requirements",
   },
   documentHandling: {
-    src: "/3.jpeg",
+    src: "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_750,h_530/https://www.poshesolutions.com/wp-content/uploads/Nebosh-IGC-POSHE-Solutions-4.png",
     alt: "Document handling for accurate global paperwork processing",
   },
   consultation: {
-    src: "/7.jpeg",
+    src: "https://superbattestation.ae/images/stamp1.webp",
     alt: "Consultation support before paperwork moves into the process",
   },
   customerHandling: {
@@ -20,7 +20,7 @@ export const CERTIFICATE_IMAGES = {
     alt: "Customer handling throughout the legalization journey",
   },
   trustedOutcome: {
-    src: "/6.jpeg",
+    src: "https://attest.ae/svg/expert-attestation-homepage-image.webp",
     alt: "Trusted service outcome for attested international documents",
   },
 } as const;

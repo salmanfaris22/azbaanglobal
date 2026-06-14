@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "indexauh.com" },
       { protocol: "https", hostname: "www.nobroker.in" },
       { protocol: "https", hostname: "apostilleserviceus.com" },
+      { protocol: "https", hostname: "attest.ae" },
+      { protocol: "https", hostname: "superbattestation.ae" },
+      { protocol: "https", hostname: "sp-ao.shortpixel.ai" },
+      { protocol: "https", hostname: "www.poshesolutions.com" },
     ],
   },
   headers: async () => [
